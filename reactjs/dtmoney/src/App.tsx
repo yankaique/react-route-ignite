@@ -3,7 +3,7 @@ import { GlobalStyle } from './styles/global';
 import { Header } from './components/Header';
 import { Dashboard } from './components/Dashboard';
 import { NewTransactionModal } from './components/NewTransactionModal';
-
+import { TransactionProvider } from './TransactionsContext';
 import Modal from 'react-modal';
 
 export function App() {
@@ -19,7 +19,7 @@ export function App() {
       setIsNewTranactionModalOpen(false);
   }
   return (
-    <>
+    <TransactionProvider>
       <Header onOpenNewTransactionModal={handleOpenNewTransactionModal}/>
       <NewTransactionModal 
         isOpen={isNewTransactionModalOpen} 
@@ -27,6 +27,6 @@ export function App() {
       />
       <Dashboard />
       <GlobalStyle/>
-    </>
+    </TransactionProvider>
   );
 };
